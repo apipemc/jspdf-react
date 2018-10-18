@@ -56,5 +56,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "jspdf": "^1.4.1"
+  }
 }
