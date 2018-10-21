@@ -1,6 +1,6 @@
 # jspdf-react
 
-> 
+>
 
 [![NPM](https://img.shields.io/npm/v/jspdf-react.svg)](https://www.npmjs.com/package/jspdf-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -15,12 +15,16 @@ npm install --save jspdf-react
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'jspdf-react'
+import PDF, { Text } from 'jspdf-react'
 
 class Example extends Component {
   render () {
     return (
-      <MyComponent />
+      <PDF preview={true}>
+        <Text x={10} y={10}>Sample 1</Text>
+        <Text x={10} y={20}>Sample 2</Text>
+        <Text x={10} y={30}>Sample 3</Text>
+      </PDF>
     )
   }
 }
