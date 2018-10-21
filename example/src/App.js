@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import PDF, { Text } from 'jspdf-react'
+import PDF, { Text, AddPage } from 'jspdf-react'
 
 export default class App extends Component {
   render () {
@@ -8,6 +8,7 @@ export default class App extends Component {
       <PDF preview={true}>
         <Text x={10} y={10}>Sample</Text>
         <Text x={10} y={20}>Sample</Text>
+        <AddPage format={'a6'} orientation={'l'}/>
         <Text x={10} y={30}>Sample</Text>
       </PDF>
     )
