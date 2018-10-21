@@ -95,7 +95,6 @@ class PDF extends Component {
         {children}
       </Provider>
     )
-
     doc.setProperties(properties)
     doc.setLanguage(language)
     if (isLoad && save) {

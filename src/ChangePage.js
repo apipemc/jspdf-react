@@ -2,17 +2,16 @@ import React from 'react'
 
 import { Consumer } from './PDF'
 
-const Line = (props) => {
-  const { x1, y1, x2, y2, width = 1 } = props
+const ChangePage = (props) => {
+  const { page } = props
   return (
     <Consumer>
       {(context) => {
-        context.doc.setLineWidth(width)
-        context.doc.line(x1, y1, x2, y2)
+        context.doc.setPage(page)
         return context.addProperty(context.doc)
       }}
     </Consumer>
   )
 }
 
-export default Line
+export default ChangePage

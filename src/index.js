@@ -2,6 +2,7 @@ import PDF from './PDF'
 
 export AddPage from './AddPage'
 export Circle from './Circle'
+export ChangePage from './ChangePage'
 export Image from './Image'
 export Table from './Table'
 export Html from './Html.js'
