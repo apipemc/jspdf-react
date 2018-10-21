@@ -1,4 +1,5 @@
-import jsPDF from 'jsPDF'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -15,13 +16,16 @@ class PDF extends Component {
     preview: PropTypes.bool,
     autoPrint: PropTypes.bool,
     children: PropTypes.node,
+    language: PropTypes.string,
     properties: PropTypes.shape({})
   }
 
   static defaultProps = {
     save: false,
     autoPrint: false,
-    preview: false
+    preview: false,
+    language: 'en-US',
+    properties: {}
   }
 
   constructor(props) {
@@ -71,7 +75,8 @@ class PDF extends Component {
       preview,
       children,
       autoPrint,
-      properties = {},
+      language,
+      properties
     } = this.props
     const { doc, callChildren } = this.state
 
@@ -86,6 +91,7 @@ class PDF extends Component {
     )
 
     doc.setProperties(properties)
+    doc.setLanguage(language)
     if (isLoad && save) {
       if (autoPrint) doc.autoPrint()
       doc.save(filename)
