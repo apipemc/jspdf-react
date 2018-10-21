@@ -58,6 +58,7 @@
     "dist"
   ],
   "dependencies": {
-    "jspdf": "^1.4.1"
+    "jspdf": "^1.4.1",
+    "jspdf-autotable": "^2.3.5"
   }
 }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'jspdf-react'
+import PDF, { Text } from 'jspdf-react'
 
 export default class App extends Component {
   render () {
     return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
+      <PDF preview={true}>
+        <Text x={10} y={10}>Sample</Text>
+        <Text x={10} y={20}>Sample</Text>
+        <Text x={10} y={30}>Sample</Text>
+      </PDF>
     )
   }
 }
