@@ -3,7 +3,7 @@ import React from 'react'
 import { Consumer } from './PDF'
 
 const AddPage = (props) => {
-  const { format, orientation } = props
+  const { format = 'a4', orientation = 'portrait' } = props
   return (
     <Consumer>
       {(context) => {
