@@ -86,6 +86,7 @@ class PDF extends Component {
     } = this.props
     const { doc, callChildren } = this.state
 
+    let contentIframe = null
     const isLoad = callChildren === children.length
     const content = (
       <Provider value={{
@@ -100,17 +101,16 @@ class PDF extends Component {
     if (isLoad && save) {
       if (autoPrint) doc.autoPrint()
       doc.save(filename)
-      return <React.Fragment>{content}</React.Fragment>
     } else if (isLoad && preview) {
       const uri = doc.output('datauristring')
-      return (
-        <React.Fragment>
-          {content}
-          <iframe frameBorder='0' width={previewWidth} height={previewHeight} src={uri} />
-        </React.Fragment>
-      )
+      contentIframe = <iframe frameBorder='0' width={previewWidth} height={previewHeight} src={uri} />
     }
-    return <React.Fragment>{content}</React.Fragment>
+    return (
+      <React.Fragment>
+        {contentIframe}
+        {content}
+      </React.Fragment>
+    )
   }
 }
 
