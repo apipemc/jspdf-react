@@ -13,11 +13,14 @@ class PDF extends Component {
     save: PropTypes.bool,
     filename: PropTypes.string,
     preview: PropTypes.bool,
-    children: PropTypes.node
+    autoPrint: PropTypes.bool,
+    children: PropTypes.node,
+    properties: PropTypes.shape({})
   }
 
   static defaultProps = {
     save: false,
+    autoPrint: false,
     preview: false
   }
 
@@ -62,7 +65,14 @@ class PDF extends Component {
   }
 
   render() {
-    const { save, filename, preview, children, properties = {} } = this.props
+    const {
+      save,
+      filename,
+      preview,
+      children,
+      autoPrint,
+      properties = {},
+    } = this.props
     const { doc, callChildren } = this.state
 
     const isLoad = callChildren === children.length
@@ -77,6 +87,7 @@ class PDF extends Component {
 
     doc.setProperties(properties)
     if (isLoad && save) {
+      if (autoPrint) doc.autoPrint()
       doc.save(filename)
       return <React.Fragment>{content}</React.Fragment>
     } else if (isLoad && preview) {

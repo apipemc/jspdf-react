@@ -11,7 +11,7 @@ const Text = (props) => {
     angle,
     align,
     color = '#000',
-    fontName = 'helvetica',
+    fontName = 'times',
     fontStyle = 'normal',
     size = 16
   } = props
