@@ -14,6 +14,8 @@ class PDF extends Component {
     save: PropTypes.bool,
     filename: PropTypes.string,
     preview: PropTypes.bool,
+    previewWidth: PropTypes.number,
+    previewHeight: PropTypes.number,
     autoPrint: PropTypes.bool,
     children: PropTypes.node,
     language: PropTypes.string,
@@ -24,6 +26,8 @@ class PDF extends Component {
     save: false,
     autoPrint: false,
     preview: false,
+    previewWidth: 600,
+    previewHeight: 900,
     language: 'en-US',
     properties: {}
   }
@@ -73,6 +77,8 @@ class PDF extends Component {
       save,
       filename,
       preview,
+      previewWidth,
+      previewHeight,
       children,
       autoPrint,
       language,
@@ -101,7 +107,7 @@ class PDF extends Component {
       return (
         <React.Fragment>
           {content}
-          <iframe frameBorder='0' width='500' height='800' src={uri} />
+          <iframe frameBorder='0' width={previewWidth} height={previewHeight} src={uri} />
         </React.Fragment>
       )
     }
