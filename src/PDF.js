@@ -19,7 +19,26 @@ class PDF extends Component {
     autoPrint: PropTypes.bool,
     children: PropTypes.node,
     language: PropTypes.string,
-    properties: PropTypes.shape({})
+    properties: PropTypes.shape({}),
+    preferences: PropTypes.shape({
+      HideToolbar: PropTypes.bool,
+      HideMenubar: PropTypes.bool,
+      HideWindowUI: PropTypes.bool,
+      FitWindow: PropTypes.bool,
+      CenterWindow: PropTypes.bool,
+      DisplayDocTitle: PropTypes.bool,
+      NonFullScreenPageMode: PropTypes.oneOf(['UseNone', 'UseOutlines', 'UseThumbs', 'UseOC']),
+      Direction: PropTypes.oneOf(['L2R', 'R2L']),
+      ViewArea: PropTypes.oneOf(['MediaBox', 'CropBox', 'TrimBox', 'BleedBox', 'ArtBox']),
+      ViewClip: PropTypes.oneOf(['MediaBox', 'CropBox', 'TrimBox', 'BleedBox', 'ArtBox']),
+      PrintArea: PropTypes.oneOf(['MediaBox', 'CropBox', 'TrimBox', 'BleedBox', 'ArtBox']),
+      PrintClip: PropTypes.oneOf(['MediaBox', 'CropBox', 'TrimBox', 'BleedBox', 'ArtBox']),
+      PrintScaling: PropTypes.oneOf(['AppDefault', 'None']),
+      Duplex: PropTypes.oneOf(['Simplex', 'DuplexFlipLongEdge', 'DuplexFlipShortEdge']),
+      PickTrayByPDFSize: PropTypes.bool,
+      PrintPageRange: PropTypes.array,
+      NumCopies: PropTypes.number
+    })
   }
 
   static defaultProps = {
@@ -29,7 +48,24 @@ class PDF extends Component {
     previewWidth: 600,
     previewHeight: 900,
     language: 'en-US',
-    properties: {}
+    properties: {},
+    preferences: {
+      HideToolbar: false,
+      HideMenubar: false,
+      HideWindowUI: false,
+      FitWindow: false,
+      CenterWindow: false,
+      DisplayDocTitle: false,
+      NonFullScreenPageMode: 'UseNone',
+      Direction: 'L2R',
+      ViewArea: 'CropBox',
+      ViewClip: 'CropBox',
+      PrintArea: 'CropBox',
+      PrintClip: 'CropBox',
+      PrintScaling: 'AppDefault',
+      PickTrayByPDFSize: false,
+      NumCopies: 1
+    }
   }
 
   constructor(props) {
@@ -82,7 +118,8 @@ class PDF extends Component {
       children,
       autoPrint,
       language,
-      properties
+      properties,
+      preferences
     } = this.props
     const { doc, callChildren } = this.state
 
@@ -98,6 +135,7 @@ class PDF extends Component {
     )
     doc.setProperties(properties)
     doc.setLanguage(language)
+    doc.viewerPreferences(preferences, true)
     if (isLoad && save) {
       if (autoPrint) doc.autoPrint()
       doc.save(filename)
