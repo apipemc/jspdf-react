@@ -28,7 +28,7 @@ export default class App extends Component {
           />
           <AddPage format='a6' orientation='l' />
           <Text x={10} y={10} color='red'>Sample</Text>
-          <Line lines={30} x={11} y={11} scale={11}/>
+          <Line x1={20} y1={20} x2={60} y2={20}/>
           <AddPage />
           <Html sourceById='page' />
         </PDF>
