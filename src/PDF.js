@@ -24,7 +24,7 @@ class PDF extends Component {
   constructor(props) {
     super(props)
     const {
-      orientation, unit, format, hotfixes, children
+      orientation, unit, format, hotfixes
     } = props
     var doc = new jsPDF({
       orientation,
@@ -32,7 +32,6 @@ class PDF extends Component {
       format,
       hotfixes
     })
-    console.log(children)
     this.state = {
       callChildren: 0,
       doc
@@ -63,7 +62,7 @@ class PDF extends Component {
   }
 
   render() {
-    const { save, filename, preview, children } = this.props
+    const { save, filename, preview, children, properties = {} } = this.props
     const { doc, callChildren } = this.state
 
     const isLoad = callChildren === children.length
@@ -76,6 +75,7 @@ class PDF extends Component {
       </Provider>
     )
 
+    doc.setProperties(properties)
     if (isLoad && save) {
       doc.save(filename)
       return <React.Fragment>{content}</React.Fragment>

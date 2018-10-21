@@ -7,7 +7,8 @@ const AddPage = (props) => {
   return (
     <Consumer>
       {(context) => {
-        return context.addProperty(context.doc.addPage(format, orientation))
+        context.doc.addPage(format, orientation)
+        return context.addProperty(context.doc)
       }}
     </Consumer>
   )
