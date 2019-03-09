@@ -1,6 +1,6 @@
 {
   "name": "jspdf-react",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Wrapper jsPDF for React",
   "author": "apipemc",
   "license": "MIT",
@@ -64,7 +64,7 @@
     "dist"
   ],
   "dependencies": {
-    "jspdf": "^1.4.1",
-    "jspdf-autotable": "^2.3.5"
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.0.13"
   }
 }

@@ -11,13 +11,8 @@ const Html = (props) => {
   return (
     <Consumer>
       {(context) => {
-        const specialElementHandlers = {
-          [`#${sourceById}`]: () => true
-        }
         const html = document.getElementById(sourceById)
-        context.doc.fromHTML(html, x, y, {
-          'elementHandlers': specialElementHandlers
-        })
+        context.doc.fromHTML(html.innerHTML, x, y)
         return context.addProperty(context.doc)
       }}
     </Consumer>

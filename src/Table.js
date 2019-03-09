@@ -5,12 +5,13 @@ import { Consumer } from './PDF'
 const Text = (props) => {
   const {
     // data
-    columns,
-    rows,
+    head,
+    body,
     // Styling
     theme = 'striped',
     styles = {},
-    headerStyles = {},
+    headStyles = {},
+    footStyles = {},
     bodyStyles = {},
     alternateRowStyles= {},
     columnStyles = {},
@@ -18,27 +19,30 @@ const Text = (props) => {
     startY = false,
     margin = 40,
     pageBreak = 'auto',
+    rowPageBreak = 'auto',
     tableWidth = 'auto',
-    showHeader = 'everyPage',
+    showHead = 'everyPage',
+    showFoot = 'everyPage',
     tableLineColor = 200,
     tableLineWidth = 0,
+    tableId = '',
     // Hooks
-    createdHeaderCell = (cell, data) => { cell, data },
-    createdCell = (cell, data) => { cell, data },
-    drawHeaderRow = (row, data) => { row, data },
-    drawRow  = (row, data) => { row, data },
-    drawHeaderCell = (cell, data) => { cell, data },
-    drawCell = (cell, data) => { cell, data },
-    addPageContent = (data) => data
+    didParseCell = (HookData) => {},
+    willDrawCell = (HookData) => { },
+    didDrawCell = (HookData) => { },
+    didDrawPage  = (HookData) => { },
   } = props
   return (
     <Consumer>
       {(context) => {
-        context.doc.autoTable(columns, rows, {
+        context.doc.autoTable({
+          head,
+          body,
           // Styling
           theme,
           styles,
-          headerStyles,
+          headStyles,
+          footStyles,
           bodyStyles,
           alternateRowStyles,
           columnStyles,
@@ -46,18 +50,18 @@ const Text = (props) => {
           startY,
           margin,
           pageBreak,
+          rowPageBreak,
           tableWidth,
-          showHeader,
+          showHead,
+          showFoot,
           tableLineColor,
           tableLineWidth,
+          tableId,
           // Hooks
-          createdHeaderCell,
-          createdCell,
-          drawHeaderRow,
-          drawRow,
-          drawHeaderCell,
-          drawCell,
-          addPageContent
+          didParseCell,
+          willDrawCell,
+          didDrawCell,
+          didDrawPage
         })
         return context.addProperty(context.doc)
       }}
