@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 
 import PDF, { Text, AddPage, Line, Image, Table, Html } from 'jspdf-react'
 
-import OctoCatImage from './octocat.jpg'
+import OctoCatImage from './OctoCatImage'
 
 export default class App extends Component {
   render () {
-    const properties = { title: 'Acme' }
-    const columns = ["ID", "Name", "Country"]
-    const rows = [
+    const properties = { header: 'Acme' }
+    const head = [["ID", "Name", "Country"]]
+    const body = [
         [1, "Shaw", "Tanzania"],
         [2, "Nelson", "Kazakhstan"],
         [3, "Garcia", "Madagascar"],
@@ -23,8 +23,8 @@ export default class App extends Component {
           <Image src={OctoCatImage} x={15} y={40} width={180} height={180} />
           <AddPage />
           <Table
-            columns={columns}
-            rows={rows}
+            head={head}
+            body={body}
           />
           <AddPage format='a6' orientation='l' />
           <Text x={10} y={10} color='red'>Sample</Text>
@@ -33,7 +33,7 @@ export default class App extends Component {
           <Html sourceById='page' />
         </PDF>
         <div id="page" style={{
-          visibility: "hidden"
+          display: "none"
         }}>
           <h1>Source Html</h1>
             <p>

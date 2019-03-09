@@ -81,8 +81,15 @@ class PDF extends Component {
     })
     this.state = {
       callChildren: 0,
+      loading: true,
       doc
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('load', () => {
+      this.setState(prevState => ({ loading: !prevState }))
+    })
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -121,7 +128,9 @@ class PDF extends Component {
       properties,
       preferences
     } = this.props
-    const { doc, callChildren } = this.state
+    const { doc, loading, callChildren } = this.state
+
+    if (loading) return null
 
     let contentIframe = null
     const isLoad = callChildren === children.length
