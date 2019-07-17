@@ -73,6 +73,7 @@ class PDF extends Component {
     const {
       orientation, unit, format, hotfixes
     } = props
+
     var doc = new jsPDF({
       orientation,
       unit,
@@ -81,14 +82,14 @@ class PDF extends Component {
     })
     this.state = {
       callChildren: 0,
-      loading: true,
+      loading: false,
       doc
     }
   }
 
   componentDidMount() {
     window.addEventListener('load', () => {
-      this.setState(prevState => ({ loading: !prevState }))
+      this.setState(prevState => ({ loading: !prevState.loading }))
     })
   }
 
@@ -108,7 +109,7 @@ class PDF extends Component {
     return false
   }
 
-  addProperty = (property) => {
+  addProperty = property => {
     this.setState(prevState => ({
       doc: property,
       callChildren: prevState.callChildren + 1 })
@@ -130,8 +131,6 @@ class PDF extends Component {
     } = this.props
     const { doc, loading, callChildren } = this.state
 
-    if (loading) return null
-
     let contentIframe = null
     const isLoad = callChildren === children.length
     const content = (
@@ -145,10 +144,13 @@ class PDF extends Component {
     doc.setProperties(properties)
     doc.setLanguage(language)
     doc.viewerPreferences(preferences, true)
-    if (isLoad && save) {
+
+    if (!loading) {
+      return null
+    } else if (loading && isLoad && save) {
       if (autoPrint) doc.autoPrint()
       doc.save(filename)
-    } else if (isLoad && preview) {
+    } else if (loading && isLoad && preview) {
       const uri = doc.output('datauristring')
       contentIframe = <iframe frameBorder='0' width={previewWidth} height={previewHeight} src={uri} />
     }

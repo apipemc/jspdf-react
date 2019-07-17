@@ -10,6 +10,11 @@
 npm install --save jspdf-react
 ```
 
+## ⚠️Note: Use CSS-in-JS, Styled-Component or emotion.
+
+If you want to convert an html in pdf, I recommend using the library.
+[https://github.com/eKoopmans/html2pdf.js](https://github.com/eKoopmans/html2pdf.js)
+
 ## Usage
 
 ```jsx
@@ -17,13 +22,23 @@ import React, { Component } from 'react'
 
 import PDF, { Text, AddPage, Line, Image, Table, Html } from 'jspdf-react'
 
-import OctoCatImage from './octocat.jpg'
+import OctoCatImage from './OctoCatImage'
 
-class Example extends Component {
+const styleH1 = {
+  fontSize: '15px',
+  textAlign: 'center',
+  color: 'red'
+};
+
+const invisibleStyle = {
+  display: 'none',
+};
+
+export default class App extends Component {
   render () {
-    const properties = { title: 'Acme' }
-    const columns = ["ID", "Name", "Country"]
-    const rows = [
+    const properties = { header: 'Acme' }
+    const head = [["ID", "Name", "Country"]]
+    const body = [
         [1, "Shaw", "Tanzania"],
         [2, "Nelson", "Kazakhstan"],
         [3, "Garcia", "Madagascar"],
@@ -38,8 +53,8 @@ class Example extends Component {
           <Image src={OctoCatImage} x={15} y={40} width={180} height={180} />
           <AddPage />
           <Table
-            columns={columns}
-            rows={rows}
+            head={head}
+            body={body}
           />
           <AddPage format='a6' orientation='l' />
           <Text x={10} y={10} color='red'>Sample</Text>
@@ -47,10 +62,8 @@ class Example extends Component {
           <AddPage />
           <Html sourceById='page' />
         </PDF>
-        <div id="page" style={{
-          visibility: "hidden"
-        }}>
-          <h1>Source Html</h1>
+        <div id="page" style={invisibleStyle}>
+          <h1 style={styleH1}>Source Html</h1>
             <p>
               <strong>lorem ipsumLorem </strong>Ipsum is simply dummy text of the printing and
               typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
