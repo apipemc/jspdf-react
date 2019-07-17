@@ -4,6 +4,16 @@ import PDF, { Text, AddPage, Line, Image, Table, Html } from 'jspdf-react'
 
 import OctoCatImage from './OctoCatImage'
 
+const styleH1 = {
+  fontSize: '15px',
+  textAlign: 'center',
+  color: 'red'
+};
+
+const invisibleStyle = {
+  display: 'none',
+};
+
 export default class App extends Component {
   render () {
     const properties = { header: 'Acme' }
@@ -32,10 +42,8 @@ export default class App extends Component {
           <AddPage />
           <Html sourceById='page' />
         </PDF>
-        <div id="page" style={{
-          display: "none"
-        }}>
-          <h1>Source Html</h1>
+        <div id="page" style={invisibleStyle}>
+          <h1 style={styleH1}>Source Html</h1>
             <p>
               <strong>lorem ipsumLorem </strong>Ipsum is simply dummy text of the printing and
               typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
