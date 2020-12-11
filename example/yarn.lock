@@ -3826,9 +3826,9 @@ inherits@2.0.1:
   integrity sha1-sX0I0ya0Qj5Wjv9xn5GwscvfafE=
 
 ini@^1.3.4, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.7.tgz#a09363e1911972ea16d7a8851005d84cf09a9a84"
+  integrity sha512-iKpRpXP+CrP2jyrxvg1kMUpXDyRUFDWurxbnVT1vQPx+Wz9uCYsMIqYuSBLV+PAaZG/d7kRLKRFc9oDMsH+mFQ==
 
 inquirer@3.3.0, inquirer@^3.0.6:
   version "3.3.0"
@@ -4693,22 +4693,24 @@ jsonify@~0.0.0:
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
   integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
 
-jspdf-autotable@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/jspdf-autotable/-/jspdf-autotable-2.3.5.tgz#6af23c191c00af86555bc0f91a21c7f6148288dc"
-  integrity sha512-QQzqTKBAC20VfuMjrOyqHArFAxKJx1oikWL8qeH+c6aF32F1H2jI8LNPVUWFcYGB0/XBlBKTT2NSQZBS9TNu2A==
+jspdf-autotable@^3.1.3:
+  version "3.5.13"
+  resolved "https://registry.yarnpkg.com/jspdf-autotable/-/jspdf-autotable-3.5.13.tgz#2808db99affc2fe2a6e27cb308bcb0b3d541c9bd"
+  integrity sha512-0oF5eHefuBjlKm60tNpPMmMS2oDNhY5U7vPkMh+s4/JZbnSjsmcUcP4j2r3k0sDvQz4ysmAi3MoOii9niJn7Og==
 
 "jspdf-react@link:..":
-  version "0.0.0"
-  uid ""
+  version "1.0.10"
+  dependencies:
+    jspdf "^1.5.3"
+    jspdf-autotable "^3.1.3"
 
-jspdf@^1.4.1:
+jspdf@^1.5.3:
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/jspdf/-/jspdf-1.5.3.tgz#5a12c011479defabef5735de55c913060ed219f2"
   integrity sha512-J9X76xnncMw+wIqb15HeWfPMqPwYxSpPY8yWPJ7rAZN/ZDzFkjCSZObryCyUe8zbrVRNiuCnIeQteCzMn7GnWw==
   dependencies:
     canvg "1.5.3"
-    file-saver eligrey/FileSaver.js#1.3.8
+    file-saver "github:eligrey/FileSaver.js#1.3.8"
     html2canvas "1.0.0-alpha.12"
     omggif "1.0.7"
     promise-polyfill "8.1.0"
