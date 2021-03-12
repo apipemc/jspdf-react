@@ -80,7 +80,7 @@
     "dist"
   ],
   "dependencies": {
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.1.3"
   }
 }
